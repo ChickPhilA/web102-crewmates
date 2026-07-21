@@ -1,58 +1,57 @@
-// import { useState, useEffect } from 'react'
-// import { supabase } from '../client'
-
-// const ReadCrewmates = (crew) => {
-
-//     const [crewmates, setCrewmates] = useState([])
-
-//     useEffect(() => {
-//         setCrewmates(crew.data)
-//     }, [crew])
-
-//     return (
-//         <div className="ReadCrew">
-//             {crewmates && crewmates.length > 0 ?
-//             [...crewmates]
-//             .sort((a, b) => a.id - b.id)
-//             .map((crewmate, index)) =>
-//         }
-//         </div>
-
-//     )
-// }
-
-export default ReadCrewmates
-
-/*
 import { useState, useEffect } from 'react'
-import Card from '../components/Card'
+import { supabase } from '../client'
+import Card  from '../components/Card'
+import './ReadCrewmates.css'
 
-const ReadPosts = (props) => {
+const ReadCrewmates = (crew) => {
 
-    const [posts, setPosts] = useState([])
+    const [crewmates, setCrewmates] = useState([])
 
     useEffect(() => {
-        setPosts(props.data)
-    }, [props])
-    
+        // Getting an API call to Supabase
+        const fetchCrewmates = async () => {
+            const {data} = await supabase
+            .from('crewmates')
+            .select()
+            .order('created_at', {ascending: false})
+
+            setCrewmates(data)
+        }
+
+        fetchCrewmates()
+    }, [crew])
+
+
     return (
-        <div className="ReadPosts">
-            {
-                posts && posts.length > 0 ?
-                [...posts]
-                .sort((a, b) => a.id - b.id)
-                .map((post,index) => 
-                    <Card 
-                        key={post.id}
-                        id={post.id} 
-                        title={post.title}
-                        author={post.author}
-                        description={post.description}
+        <>
+            <div className="ReadCrew">
+                {crewmates && crewmates.length > 0 ?
+                    [...crewmates]
+                    .sort((a, b) => a.id - b.id)
+                    .map((crewmate, index) => 
+                        <Card key = {crewmate.id}
+                        id={crewmate.id}
+                        name={crewmate.name}
+                        color={crewmate.color}
+                        createdAt={crewmate.created_at}
+                        speed={crewmate.speed}
+                        hat={crewmate.hat}
+                        pet={crewmate.pet}
+                    
                     />
-                ) : <h2>{'No Challenges Yet 😞'}</h2>
-            }
-        </div>  
+                    )
+            
+                :
+                <div style={{ textAlign: "center", marginTop: "25vh", marginBottom: "25vh" }}>
+                    {"You don't have a team assembled yet!"}
+                </div>
+                }
+            </div>
+        </>
+
     )
 }
 
-export default ReadPosts*/
+export default ReadCrewmates
+
+/
