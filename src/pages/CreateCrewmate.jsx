@@ -1,5 +1,6 @@
 import { supabase } from "../client";
 import { useState } from 'react'
+import './createCrewmate.css'
 
 const CreateCrewmate = () => {
 
@@ -9,7 +10,7 @@ const CreateCrewmate = () => {
         const {name, value} = event.target
         setCrewmate( (prev) => {
             return {
-                ...prev, 
+                ...prev,
                 [name]:value
             }
         })
@@ -17,6 +18,12 @@ const CreateCrewmate = () => {
 
     const createCrewmate = async (event) => {
         event.preventDefault()
+
+        const hasEmptyField = Object.values(crewmate).some((value) => value === "")
+        if (hasEmptyField) {
+            alert("One or more data values have not been entered for your crewmate!")
+            return
+        }
 
         await supabase
         .from('crewmates')
@@ -27,33 +34,68 @@ const CreateCrewmate = () => {
     }
 
     return (
-        <>
-        <div>
-            <form onSubmit={createCrewmate}>
-                <label htmlFor="name">Name of Crewmate</label> <br />
-                <input type="text" id="name" name="name" onChange={handleChange} /><br />
-                <br/>
+        <div className="create-crewmate-card">
+            <h1 className="create-crewmate-title">Create a New Crewmate</h1>
+            <div className="crewmate-emoji-row">👾 👽 🛸 👾 👽</div>
 
-                <label htmlFor="color">Color</label><br />
-                <input type="text" id="color" name="color" onChange={handleChange} /><br />
-                <br/>
+            <form onSubmit={createCrewmate} className="crewmate-field-grid">
 
-                <label htmlFor="speed">Speed</label><br />
-                <input type="number" step="0.1" id="speed" name="speed" onChange={handleChange} /><br />
-                <br/>
+                <div className="crewmate-field-card">
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter crewmate's name" onChange={handleChange} />
+                </div>
 
-                <label htmlFor="hat">Hat</label><br />
-                <input type="text" id="hat" name="hat" onChange={handleChange} /><br />
-                <br/>
+                <div className="crewmate-field-card">
+                    <label htmlFor="speed">Speed (mph):</label>
+                    <input type="number" step="0.1" id="speed" name="speed" placeholder="Enter speed in mph" onChange={handleChange} />
+                </div>
 
-                <label htmlFor="pet">Pet</label><br />
-                <input type="text" id="pet" name="pet" onChange={handleChange} /><br />
-                <br/>
-                <input type="submit" value="Submit" />
+                <div className="crewmate-field-card">
+                    <label htmlFor="color">Color:</label>
+                    <select id="color" name="color" onChange={handleChange} defaultValue="">
+                        <option value="" disabled>Select a color</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="orange">Orange</option>
+                        <option value="pink">Pink</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="brown">Brown</option>
+                        <option value="cyan">Cyan</option>
+                        <option value="lime">Lime</option>
+                    </select>
+                </div>
+
+                <div className="crewmate-field-card">
+                    <label htmlFor="hat">Hat:</label>
+                    <select id="hat" name="hat" onChange={handleChange} defaultValue="">
+                        <option value="" disabled>Select a hat</option>
+                        <option value="none">None</option>
+                        <option value="cowboy">Cowboy</option>
+                        <option value="chef">Chef</option>
+                        <option value="party">Party</option>
+                        <option value="halo">Halo</option>
+                        <option value="plant">Plant</option>
+                    </select>
+                </div>
+
+                <div className="crewmate-field-card">
+                    <label htmlFor="pet">Pet:</label>
+                    <select id="pet" name="pet" onChange={handleChange} defaultValue="">
+                        <option value="" disabled>Select a pet</option>
+                        <option value="none">None</option>
+                        <option value="dog">Dog</option>
+                        <option value="robot">Robot</option>
+                        <option value="mini-crewmate">Mini Crewmate</option>
+                    </select>
+                </div>
+
+                <input type="submit" value="Create Crewmate" className="crewmate-submit-button" />
             </form>
         </div>
-        </>
-
     )
 }
 
