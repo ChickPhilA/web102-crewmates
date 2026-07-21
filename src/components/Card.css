@@ -1,0 +1,17 @@
+.card {
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  background-color: #111133;
+  padding: 1.25rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.card .crewmate-icon {
+  width: 80px;
+  height: auto;
+}
