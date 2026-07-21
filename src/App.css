@@ -1,3 +1,32 @@
 h1, h3 {
   text-align: center;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  background-color: #06061c;
+  font-family: "VT323", monospace;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+
+.sidebar-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+
+.page-content {
+  margin-left: 220px;
+}
