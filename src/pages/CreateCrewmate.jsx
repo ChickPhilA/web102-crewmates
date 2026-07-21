@@ -18,12 +18,10 @@ const CreateCrewmate = () => {
     const createCrewmate = async (event) => {
         event.preventDefault()
 
-        const { data, error } = await supabase
+        await supabase
         .from('crewmates')
         .insert({name: crewmate.name, color: crewmate.color, speed: crewmate.speed, hat: crewmate.hat, pet: crewmate.pet})
         .select()
-
-        console.log({ data, error })
 
         window.location = "/"
     }
