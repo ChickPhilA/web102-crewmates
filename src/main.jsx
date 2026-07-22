@@ -7,6 +7,7 @@ import App from './App.jsx'
 import Navbar from './pages/Navbar.jsx'
 import CreateCrewmate from './pages/createCrewmate.jsx'
 import ReadCrewmates from './pages/ReadCrewmates.jsx'
+import EditCrewmate from './pages/EditCrewmate.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
         <Route index={true} element={<App/>} />
         <Route path="create" element={<CreateCrewmate/>} />
         <Route path="gallery" element={<ReadCrewmates/>} />
+        <Route path="crewmate/:id/edit" element={<EditCrewmate/>} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
