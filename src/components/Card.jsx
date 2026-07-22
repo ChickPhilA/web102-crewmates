@@ -34,10 +34,10 @@ const Card = (crewmate) => {
     return (
         <div>
             <div className="card">
-                <Link to={'/crewmate/' + crewmate.id}>
+                <Link to={'crewmate/' + crewmate.id}>
                     <img className="crewmate-icon" alt={crewmate.color + " crewmate"} src={colorIcons[crewmate.color]} />
                 </Link>
-                <Link to={'/crewmate/' + crewmate.id}>
+                <Link to={'crewmate/' + crewmate.id}>
                     <h2 className="crewmate-name">{crewmate.name}</h2>
                 </Link>
                 <p className="crewmate-created-at">Created on: {new Date(crewmate.createdAt).toLocaleDateString()}</p>
