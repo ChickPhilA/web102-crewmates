@@ -37,7 +37,7 @@ const EditCrewmate = () => {
     }
 
     // when the form is completed, anything updated to the crewmate state, will be updated to the database.
-    const updatePost = async (event) => {
+    const updateCrewmate = async (event) => {
         event.preventDefault()
 
         const nothingChanged = Object.keys(crewmate).every(
@@ -57,13 +57,24 @@ const EditCrewmate = () => {
         window.location = "/"
     }
 
+    // to delete the crewmate based on id in our database.
+    const deleteCrewmate = async (event) => {
+        event.preventDefault()
+
+        await supabase
+        .from('crewmates')
+        .delete()
+        .eq('id', id)
+
+        window.location = "/gallery"
+    }
 
     return (
         <div className="create-crewmate-card">
             <Link to="/gallery" className="back-link">← Back</Link>
             <h1 className="create-crewmate-title">Edit Details</h1>
 
-            <form onSubmit={updatePost} className="crewmate-field-grid">
+            <form onSubmit={updateCrewmate} className="crewmate-field-grid">
 
                 <div className="crewmate-field-card">
                     <label htmlFor="name">Name:</label>
@@ -119,6 +130,7 @@ const EditCrewmate = () => {
                 </div>
 
                 <input type="submit" value="Save Changes" className="crewmate-submit-button" />
+                <button type="button" className="delete-crewmate-button" onClick={deleteCrewmate}>Delete Crewmate</button>
             </form>
         </div>
     )
