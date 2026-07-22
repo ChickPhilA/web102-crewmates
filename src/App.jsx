@@ -8,11 +8,13 @@ function App() {
 
   return (
     <>
-      <h1> Welcome to Crewmate Curator! </h1>
-      <h3> Ready to create, organize, and send off your own crew into space?
-        What kind of adventures will your crew encounter in the wide, vast galaxies out there?
-        There will be no one, among us, who won't stop us from these out-of-the-world expeditions!
-      </h3>
+      <div className="home-center">
+        <h1> Welcome to Crewmate Curator! </h1>
+        <h3> Ready to create, organize, and send off your own crew into space?
+          What kind of adventures will your crew encounter in the wide, vast galaxies out there?
+          There will be no one, among us, who won't stop us from these out-of-the-world expeditions!
+        </h3>
+      </div>
     </>
   )
 }
