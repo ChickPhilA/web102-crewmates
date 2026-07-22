@@ -16,18 +16,12 @@
   height: auto;
 }
 
-.edit-link {
-  margin-top: 0.5rem;
-  padding: 0.4rem 1.2rem;
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  background-color: #2e2e5e;
-  color: #ffffff;
+.crewmate-name-link {
   text-decoration: none;
-  font-family: "VT323", monospace;
-  font-size: 1.1rem;
+  color: inherit;
 }
 
-.edit-link:hover {
-  background-color: #3e3e7e;
+.crewmate-name-link:hover .crewmate-name {
+  text-decoration: underline;
+  color: #9fdfff;
 }
