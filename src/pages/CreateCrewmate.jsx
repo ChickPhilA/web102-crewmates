@@ -30,7 +30,7 @@ const CreateCrewmate = () => {
         .insert({name: crewmate.name, color: crewmate.color, speed: crewmate.speed, hat: crewmate.hat, pet: crewmate.pet})
         .select()
 
-        window.location = "/"
+        window.location = "/gallery"
     }
 
     return (
