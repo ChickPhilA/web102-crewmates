@@ -24,6 +24,12 @@ const ReadCrewmates = (crew) => {
 
     return (
         <>
+            {crewmates && crewmates.length > 0 &&
+                <>
+                    <h1>Here are a list of your crewmates!</h1>
+                    <h3>(Hover over a name to check more details about them!)</h3>
+                </>
+            }
             <div className="ReadCrew">
                 {crewmates && crewmates.length > 0 ?
                     [...crewmates]
